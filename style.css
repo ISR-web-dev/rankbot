@@ -141,8 +141,12 @@ body {
 
 
 
-  @media screen and (max-width: 960px) {
+    @media screen and (max-width: 960px) {
     .container {
       margin-top: 100px;
+      border: none;
+      border-top: 10px solid #00D4A1;
+      border-bottom: 10px solid #00D4A1;
+      border-radius: 0;
     }
   }
