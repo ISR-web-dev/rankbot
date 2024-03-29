@@ -60,6 +60,37 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
     border: 10px solid #00D4A1;
   }
+  .slider {
+    width: 100%;
+    max-width: 600px;
+    padding: 40px;
+    color: #fff;
+    background-color: #222020;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    bottom: -600px;
+    z-index: 30;
+    transition: 0.2s;
+  }
+  .slider.active {
+    bottom: 0;
+  }
+  .slider-closer {
+    background-color: #ffffff35;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    display: none;
+  }
+  .slider-closer.active {
+    display: block;
+  }
   
 
   .container p {
@@ -149,4 +180,7 @@ body {
       border-bottom: 10px solid #00D4A1;
       border-radius: 0;
     }
+        .slider {
+            border-radius: 0;
+        }
   }
