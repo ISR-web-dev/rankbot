@@ -14,14 +14,14 @@ genButton.addEventListener('click', () => {
     let waNum = document.querySelector('.wa-number').value;
 
     document.getElementById('generate').innerHTML = 'Generated';
-
-    encodedText = encodeURIComponent(textToCopy);
     
     textToCopy = `Hi ${document.querySelector('.client-name').value},
 I hope you're happy with the ${document.querySelector('.p-s').value}! If you have a moment, I'd really appreciate it if you could leave a review on the Following Link
 ${document.querySelector('.link').value}
 Thanks,
 ${document.querySelector('.name').value}`;
+
+    encodedText = encodeURIComponent(textToCopy);
 
     link = `https://api.whatsapp.com/send?phone=92${waNum}&text=${encodedText}`;
 
