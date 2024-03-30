@@ -72,3 +72,58 @@ copyButton.addEventListener('click', () => {
     alert('Text copied to clipboard (fallback method)');
   }
 });
+
+
+
+
+
+function saveLink() {
+  // Get the input element and its value
+  const linkElement = document.querySelector('.link');
+  const linkValue = linkElement.value;
+
+  // Store the value in local storage
+  if (linkValue) {
+    localStorage.setItem("savedLinkValue", linkValue);
+  
+    document.querySelector('.link').setAttribute('disabled', '');
+    document.querySelector('.lock-btn').classList.add('locked');
+  }    
+  }
+
+function restoreValue() {
+  // Get the saved value from local storage (if it exists)
+  const savedValue = localStorage.getItem("savedLinkValue");
+
+  // If a saved value exists, set it back into the input field
+  if (savedValue) {
+      const inputElement = document.querySelector('.link');
+      inputElement.value = savedValue;
+
+      document.querySelector('.lock-btn').classList.add('locked');
+      document.querySelector('.link').setAttribute('disabled', '');
+  }
+}
+
+function reset() {
+  localStorage.setItem("savedLinkValue", '');
+  const inputElement = document.querySelector('.link');
+  inputElement.value = '';
+  document.querySelector('.link').removeAttribute('disabled', '');
+  document.querySelector('.lock-btn').classList.remove('locked');
+}
+
+document.querySelector('.lock-btn').addEventListener('click', () => {
+  const savedValue = localStorage.getItem("savedLinkValue");
+
+  if (savedValue) {
+    reset();
+  } else {
+    saveLink();
+  }
+});
+
+
+window.onload = restoreValue;
+
+
