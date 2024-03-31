@@ -11,6 +11,7 @@ let link = `https://api.whatsapp.com/send?phone=923204108963&text=`;
 genButton.addEventListener('click', () => {
 
 
+    let cCode = document.querySelector('.c-code').value;
     let waNum = document.querySelector('.wa-number').value;
 
     document.getElementById('generate').innerHTML = 'Generated';
@@ -24,23 +25,35 @@ ${document.querySelector('.name').value}`;
 
     encodedText = encodeURIComponent(textToCopy);
 
-    link = `https://api.whatsapp.com/send?phone=92${waNum}&text=${encodedText}`;
+    link = `https://api.whatsapp.com/send?phone=${cCode}${waNum}&text=${encodedText}`;
 
     document.querySelector('.wa-link').setAttribute('href', link);
 
-    document.querySelector('.slider').classList.toggle('active');
-    document.querySelector('.slider-closer').classList.toggle('active');
+    document.querySelector('.slider').classList.add('active');
+    document.querySelector('.closer').classList.add('active');
 
+    closer('slider')
 });
 
-document.querySelector('.slider-closer').addEventListener('click', () => {
-    document.querySelector('.slider').classList.toggle('active');
-    document.querySelector('.slider-closer').classList.toggle('active');
+
+
+
+function closer(elementClass) {
+  document.querySelector('.closer').classList.add('active');
+
+  document.querySelector('.closer').addEventListener('click', () => {
+    document.querySelector(`.${elementClass}`).classList.remove('active');
+    document.querySelector('.closer').classList.remove('active');
 });
+
+}
 
 
 document.querySelector('.setting-button').addEventListener('click', () => {
-  document.querySelector('.menu').classList.toggle('active');
+  document.querySelector('.menu').classList.add('active');
+
+  closer('menu');
+
 });
 
 document.querySelector('.toggle').addEventListener('click', () => {
@@ -127,3 +140,71 @@ document.querySelector('.lock-btn').addEventListener('click', () => {
 window.onload = restoreValue;
 
 
+
+
+document.querySelector('.change-country-btn').addEventListener('click', () => {
+  document.querySelector('.country-codes').classList.add('active');
+  closer('country-codes');
+});
+
+
+
+document.querySelector('.pakistan').addEventListener('click', () => {
+  const element = document.querySelector('.c-code');
+  element.value = 92;
+
+  document.querySelector(`.country-codes`).classList.remove('active');
+  document.querySelector('.closer').classList.remove('active');
+
+  saveInputValue('c-code');
+});
+
+document.querySelector('.uae').addEventListener('click', () => {
+  const element = document.querySelector('.c-code');
+  element.value = 971;
+
+  document.querySelector(`.country-codes`).classList.remove('active');
+  document.querySelector('.closer').classList.remove('active');
+
+  
+  saveInputValue('c-code');
+});
+
+document.querySelector('.india').addEventListener('click', () => {
+  const element = document.querySelector('.c-code');
+  element.value = 91;
+
+  document.querySelector(`.country-codes`).classList.remove('active');
+  document.querySelector('.closer').classList.remove('active');
+
+  
+  saveInputValue('c-code');
+});
+
+
+
+
+
+
+
+
+function saveInputValue(className) {
+  // Get all input elements with the specified class
+  const input = document.querySelector(`.${className}`);
+
+    const value = input.value;
+    localStorage.setItem(`countryCode`, value);
+}
+
+// Function to restore saved values on page load
+function restoreInputValue(className) {
+  const inputs = document.querySelectorAll(`.${className}`);
+  inputs.forEach(input => {
+    const savedValue = localStorage.getItem(`countryCode`);
+    if (savedValue) {
+      input.value = savedValue;
+    }
+  });
+}
+
+  restoreInputValue('c-code');
