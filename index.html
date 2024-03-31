@@ -8,7 +8,10 @@
 <body>
   <div class="container">
     <div class="wa-container">
-      <input class="zero" type="text" placeholder="" value="0" disabled>
+      <input class="c-code" type="text" placeholder="" value="92" disabled>
+      <div class="change-country-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#00d4a1" d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
+      </div>
       <input class="wa-number" type="text" placeholder="WhatsApp Number" value="" >
     </div>
     <div class="inputs">
@@ -57,12 +60,24 @@
     </div>
   </nav>
 
-  <nav class="slider-closer"></nav>
+  <nav class="closer"></nav>
   <nav class="slider">
     <button id="copy-button">Copy to Clipboard</button>
     <a target="_blank" class="wa-link" style="width: 100%;" href="https://api.whatsapp.com/send?phone=923204108963&text=">
       <button class="wa-button" id="wa-button">Send on WhatsApp</button>
     </a>
+  </nav>
+
+  <nav class="country-codes">
+    <div class="country-item pakistan">
+      <h3>+92 | Pakistan</h3>
+    </div>
+    <div class="country-item uae">
+      <h3>+971 | Dubai (UAE)</h3>
+    </div>
+    <div class="country-item india last">
+      <h3>+91 | India</h3>
+    </div>
   </nav>
 
   <script src="script.js"></script> </body>
