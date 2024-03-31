@@ -25,8 +25,9 @@ body {
   ::placeholder {
     font-family: Poppins;
   }
-  .zero {
-    width: 10px;
+  .c-code {
+    width: 40px;
+    margin-right: 5px;
   }
   .wa-number {
     width: 100%;
@@ -37,6 +38,7 @@ body {
   .wa-container{
     display: flex;
     width: 100%;
+    position: relative;
   }
   .wa-container.closed {
     display: none;
@@ -47,6 +49,14 @@ body {
     flex-direction: column;
     flex-direction: column;
     position: relative;
+  }
+  .change-country-btn {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: 50px;
+    top: 11px;
+    cursor: pointer;
   }
   .lock-btn {
     display: flex;
@@ -95,7 +105,7 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
     border: 10px solid #00D4A1;
   }
-  .slider {
+  .slider, .country-codes {
     width: 100%;
     max-width: 600px;
     padding: 40px;
@@ -113,7 +123,7 @@ body {
   .slider.active {
     bottom: 0;
   }
-  .slider-closer {
+  .closer {
     background-color: #ffffff35;
     position: fixed;
     top: 0;
@@ -123,10 +133,36 @@ body {
     z-index: 10;
     display: none;
   }
-  .slider-closer.active {
+  .closer.active {
     display: block;
   }
-  
+  .country-codes {
+    bottom: auto;
+    display: none;
+    z-index: 100;
+  }
+  .country-codes.active {
+    display: block;
+  }
+  .country-item {
+    width: 1fr;
+    padding: 20px;
+    color: #fff;
+    cursor: pointer;
+    border-bottom: 1px solid #00D4A1;
+  }
+  .country-item h3 {
+    font-weight: 400;
+    margin: 0;
+    opacity: 0.7;
+    transition: 0.2s;
+  }
+  .country-item:hover h3 {
+    opacity: 1;
+  }
+  .country-item.last {
+    border-bottom: 0;
+  }
 
   .container p {
     margin-bottom: 1rem;
@@ -177,6 +213,7 @@ body {
     background-color: #222020;
     transition: 0.2s;
     box-shadow: -20px 20px 22px rgba(0, 0, 0, 0.25);
+    z-index: 100;
   }
   .menu.active {
     right: 20px;
