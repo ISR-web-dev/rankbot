@@ -292,11 +292,8 @@ function restoreInputValue(className) {
     document.querySelector('.custom').removeAttribute('readonly', '');
     document.querySelector('.reset-message').innerHTML = 'Reset';
 
-    const savedName = localStorage.getItem("customMessageName");
-    const savedMessage = localStorage.getItem("customMessage");
-  
-    // If a saved value exists, set it back into the input field
-    if (savedName && savedMessage) {
+    
+    if (messagesData[messagesData.length-1].title === 'Custom') {
       messagesData.splice(messagesData.length-1, 1);
     }
   });
