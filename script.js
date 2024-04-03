@@ -170,38 +170,26 @@ document.querySelector('.change-country-btn').addEventListener('click', () => {
 });
 
 
-
-document.querySelector('.pakistan').addEventListener('click', () => {
-  const element = document.querySelector('.c-code');
-  element.value = 92;
-
-  document.querySelector(`.country-codes`).classList.remove('active');
-  document.querySelector('.closer').classList.remove('active');
-
-  saveInputValue('c-code');
-});
-
-document.querySelector('.uae').addEventListener('click', () => {
-  const element = document.querySelector('.c-code');
-  element.value = 971;
-
-  document.querySelector(`.country-codes`).classList.remove('active');
-  document.querySelector('.closer').classList.remove('active');
-
+function createCountryCode(elementClass, cCode) {
+  document.querySelector(`.${elementClass}`).addEventListener('click', () => {
+    const element = document.querySelector('.c-code');
+    element.value = cCode;
   
-  saveInputValue('c-code');
-});
-
-document.querySelector('.india').addEventListener('click', () => {
-  const element = document.querySelector('.c-code');
-  element.value = 91;
-
-  document.querySelector(`.country-codes`).classList.remove('active');
-  document.querySelector('.closer').classList.remove('active');
-
+    document.querySelector(`.country-codes`).classList.remove('active');
+    document.querySelector('.closer').classList.remove('active');
   
-  saveInputValue('c-code');
-});
+    
+    saveInputValue('c-code');
+  });
+}
+
+
+
+createCountryCode('india', 91);
+createCountryCode('pakistan', 92);
+createCountryCode('uae', 971);
+
+
 
 
 
