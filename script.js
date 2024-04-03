@@ -1,8 +1,14 @@
 const copyButton = document.getElementById('copy-button');
 const genButton = document.getElementById('generate');
+
+restoreCustomMessage();
 let selectionCount = 0;
+restoreSelectionCount();
+
+
 let selectedMessage = {title:messagesData[selectionCount].title, message:messagesData[selectionCount].message};
 let textToCopy = selectedMessage.message;
+
 
 function updateMessage() {
   selectedMessage = {title:messagesData[selectionCount].title, message:messagesData[selectionCount].message}
@@ -242,6 +248,7 @@ function restoreInputValue(className) {
     } else if(fun === 'add') {
       if(selectionCount < messagesData.length-1) {
         selectionCount++;
+        selectionCountSave();
       }
       else {
         selectionCount = 0;
@@ -249,6 +256,7 @@ function restoreInputValue(className) {
     } else if(fun === 'remove') {
       if(selectionCount > 0) {
         selectionCount--;
+        selectionCountSave();
       }
       else {
         selectionCount = messagesData.length-1;
@@ -292,7 +300,6 @@ function restoreInputValue(className) {
     document.querySelector('.custom').removeAttribute('readonly', '');
     document.querySelector('.reset-message').innerHTML = 'Reset';
 
-    
     if (messagesData[messagesData.length-1].title === 'Custom') {
       messagesData.splice(messagesData.length-1, 1);
     }
@@ -307,6 +314,7 @@ function restoreInputValue(className) {
 
       messagesData.push({title:'Custom', message:document.querySelector('.custom').value});
       selectionCount = messagesData.length-1;
+      selectionCountSave();
       updateMessage();
       storeCustomMessage();
     close('custom-message');
@@ -332,8 +340,13 @@ function restoreInputValue(className) {
       document.querySelector('.custom').setAttribute('readonly', '');
       document.querySelector('.reset-message').innerHTML = 'Unlock';
       messagesData.push({title:savedName, message:savedMessage});
-        selectionCount = messagesData.length-1;
-        updateMessage();
     }
   }
-  restoreCustomMessage();
+
+
+  function selectionCountSave() {
+    localStorage.setItem("selectionCount", selectionCount);
+  }
+  function restoreSelectionCount() {
+    selectionCount = Math.floor(localStorage.getItem("selectionCount"));
+  }
