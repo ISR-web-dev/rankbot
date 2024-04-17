@@ -6,6 +6,9 @@ let selectionCount = 0;
 if(localStorage.getItem("selectionCount")) {
 restoreSelectionCount();
 }
+if(selectionCount >= messagesData.length) {
+  selectionCount = 0;
+}
 genCountRestore();
 
 
