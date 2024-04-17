@@ -338,3 +338,7 @@ function restoreInputValue(className) {
   function restoreSelectionCount() {
     selectionCount = Math.floor(localStorage.getItem("selectionCount"));
   }
+
+  document.querySelector('.upgrade').addEventListener('click', () => {
+    window.open('https://isr-web-dev.github.io/rankbot/');
+  });
