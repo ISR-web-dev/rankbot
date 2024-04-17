@@ -123,6 +123,7 @@ body {
     bottom: -600px;
     z-index: 30;
     transition: 0.2s;
+    box-sizing: border-box;
   }
   .slider.active {
     bottom: 0;
@@ -302,10 +303,16 @@ body {
       border-bottom: 10px solid #00D4A1;
       border-radius: 0;
       box-sizing: border-box;
+      padding: 40px 20px;
     }
-        .slider {
-            border-radius: 0;
-        }
+    .slider, .country-codes, .message-container, .custom-message {
+      padding: 20px;
+      border-radius: 16px;
+    }
+    .slider {
+        border-radius: 0;
+        box-sizing: border-box;
+    }
   }
 
 
