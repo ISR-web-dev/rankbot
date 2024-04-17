@@ -3,7 +3,9 @@ const genButton = document.getElementById('generate');
 
 let genCount = 0;
 let selectionCount = 0;
+if(localStorage.getItem("selectionCount")) {
 restoreSelectionCount();
+}
 genCountRestore();
 
 
