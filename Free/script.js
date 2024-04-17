@@ -317,5 +317,5 @@ function restoreInputValue(className) {
   updateGenCount();
 
   document.querySelector('.upgrade').addEventListener('click', () => {
-    window.open('https://isr-web-dev.github.io/rankbot/');
+    window.open('https://forms.gle/WP2W71EF5qrE3Y1PA');
   });
